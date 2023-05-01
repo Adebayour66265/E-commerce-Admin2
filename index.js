@@ -30,7 +30,7 @@ app.get("/products", (req, res) => {
   res.send(products);
 });
 
-const uri = process.env.DB_URI || 'mongodb+srv://Glopilot:Ade@cluster0.8114dlp.mongodb.net/Glopilot?retryWrites=true&w=majority';
+const uri = process.env.DB_URI;
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
