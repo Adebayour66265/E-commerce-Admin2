@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const register = require("./routes/register");
 const login = require("./routes/login");
-const orders = require("./routes/Orders");
+const orders = require("./routes/orders");
 const stripe = require("./routes/stripe");
 const productsRoute = require("./routes/products");
 
@@ -31,16 +31,12 @@ app.get("/products", (req, res) => {
 });
 
 const uri = process.env.DB_URI;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
-  console.log(`Server running on port: ${port}...`);
-});
-
-mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+mongoose.connect(uri).then(() => {
+  app.listen(port, () => {
+    console.log(`App is Running ${port}`);
   })
-  .then(() => console.log("MongoDB connection established..."))
-  .catch((error) => console.error("MongoDB connection failed:", error.message));
+}).catch((err) => {
+  console.log(err);
+});
