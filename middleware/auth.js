@@ -15,6 +15,7 @@ const auth = (req, res, next) => {
   }
 };
 
+
 // For User Profile
 const isUser = (req, res, next) => {
   auth(req, res, () => {
