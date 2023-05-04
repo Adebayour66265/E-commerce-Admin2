@@ -12,7 +12,7 @@ router.post("/", isAdmin, async (req, res) => {
   try {
     if (image) {
       const uploadedResponse = await cloudinary.uploader.upload(image, {
-        upload_preset: "Proficient",
+        upload_preset: "dswdby4b0",
       });
 
       if (uploadedResponse) {
@@ -25,6 +25,7 @@ router.post("/", isAdmin, async (req, res) => {
         });
 
         const savedProduct = await product.save();
+        console.log(savedProduct);
         res.status(200).send(savedProduct);
       }
     }
